@@ -27,7 +27,7 @@ module.exports = {
     '@typescript-eslint/member-delimiter-style': 'off',
     'no-unused-vars': 'off', // or "@typescript-eslint/no-unused-vars": "off",
     'unused-imports/no-unused-imports': 'error',
-    'multiline-ternary': ['error', 'never'],
+    'multiline-ternary': 'off',
     'unused-imports/no-unused-vars': [
       'warn',
       {
