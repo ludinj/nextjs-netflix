@@ -15,7 +15,7 @@ interface IAuth {
   signUp: (email: string, password: string) => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
   logOut: () => Promise<void>;
-  error: string | null;
+  error: unknown | null;
   loading: boolean;
 }
 
@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
   const router = useRouter();
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<unknown | null>(null);
 
   useEffect(
     () =>
@@ -70,6 +70,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       void router.push('/');
       setLoading(false);
     } catch (error) {
+      setError(error);
       alert(error);
     } finally {
       setLoading(false);

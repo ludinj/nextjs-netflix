@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { FaPlay } from 'react-icons/fa';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { modalState, movieState } from '../atoms/modalAtom';
 import { baseUrl } from '../constants/movie';
 import { IMovie } from '../typings';
@@ -10,8 +10,8 @@ interface BannerProps {
 }
 const Banner = ({ netflixOriginals }: BannerProps) => {
   const [radomMovie, setRadomMovie] = useState<IMovie | null>(null);
-  const [showModal, setShowModal] = useRecoilState(modalState);
-  const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
+  const setShowModal = useSetRecoilState(modalState);
+  const setCurrentMovie = useSetRecoilState(movieState);
   useEffect(() => {
     setRadomMovie(
       netflixOriginals[Math.floor(Math.random() * netflixOriginals.length)]
